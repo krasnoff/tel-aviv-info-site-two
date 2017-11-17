@@ -1,0 +1,54 @@
+.example-spacer
+{
+    flex: 1 1 auto;
+}
+
+.mat-toolbar
+{
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+}
+
+.search-button, .search-close-button
+{
+    background-color: transparent;
+    color: white;
+    border: 0px;
+    outline: none;
+    cursor: pointer;
+}
+
+.example-container {
+    width: 100%;
+    height: calc(100vh - 64px);
+    background-color: transparent;
+}
+  
+.example-sidenav-content {
+    display: flex;
+    height: calc(100vh - 64px);
+    align-items: center;
+    justify-content: center;
+}
+  
+.example-sidenav {
+    padding: 20px;
+}
+
+md-sidenav {
+    width: 280px;
+}
+
+.txtSearch
+{
+    border: 0px;
+    border-bottom: 1px solid rgba(49, 15, 240, 0.87);
+    outline-width: 0;
+    font-size: 16px;
+}
+
+.material-icons
+{
+    vertical-align: middle;
+    
+}
+
