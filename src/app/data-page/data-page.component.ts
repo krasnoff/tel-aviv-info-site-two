@@ -48,9 +48,20 @@ export class DataPageComponent implements OnInit {
     this._httpService.getMethod('https://jsonplaceholder.typicode.com/' + dataType)
     .subscribe (
       data => {
-        this.res = data;    
+        this.parseData(data);    
       }
     );
+  }
+
+  parseData(obj: any)
+  {
+    for (var i = 0; i < obj.length; i++) {
+      for (var property in obj[i]) {
+        if (obj[i].hasOwnProperty(property)) {
+            // do stuff
+        }
+      }
+    }
   }
 }
 
