@@ -22,6 +22,7 @@ export class DataPageComponent implements OnInit {
   private dataType: string; 
   private sub: any;
   private res: any;
+  public param: string;
 
   displayedColumns = ['position', 'name', 'weight', 'symbol'];
   dataSource = new ExampleDataSource();
@@ -31,16 +32,21 @@ export class DataPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getParam();
+
     this.router.events
     .filter((event) => event instanceof NavigationEnd)
     .subscribe((event) => {
         console.log('NavigationEnd:', event);
-        this.sub = this.route.params.subscribe(params => {
-          this.getData(params['dataType']); 
-        });
+        this.getParam();
     });
+  }
 
-    
+  getParam() {
+    this.sub = this.route.params.subscribe(params => {
+      this.param = params['dataType'];
+      this.getData(this.param); 
+    });
   }
 
   getData(dataType: string)
@@ -55,13 +61,16 @@ export class DataPageComponent implements OnInit {
 
   parseData(obj: any)
   {
-    for (var i = 0; i < obj.length; i++) {
-      for (var property in obj[i]) {
-        if (obj[i].hasOwnProperty(property)) {
-            // do stuff
+    if (obj.length > 0)
+    {
+      this.displayedColumns = [];
+      for (var property in obj[0]) {
+        if (obj[0].hasOwnProperty(property)) {
+          this.displayedColumns.push(property);
         }
       }
     }
+    
   }
 }
 
