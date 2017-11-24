@@ -15,7 +15,7 @@ export class AppComponent {
   @ViewChild('sidenav')sidenav: any;
 
   constructor(private _httpService:AppService) {}
-  private codes: Array<any> = [];
+  public codes: Array<any> = [];
   private codesOriginal: Array<any> = [];
   
   ngOnInit() {
