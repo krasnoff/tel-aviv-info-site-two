@@ -1,5 +1,5 @@
-<p>
-  data-page works! - Page {{param}}<br><br>
+<div class="mainFrame">
+  <div class="title">{{param}}</div>
   <!--mat-table #table [dataSource]="dataSource"-->
   <mat-table #table>
     <ng-container *ngFor="let col of displayedColumns" matColumnDef={{col}}>
@@ -11,4 +11,4 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         
   </mat-table>
-</p>
+</div>
