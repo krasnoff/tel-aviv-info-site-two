@@ -16,7 +16,7 @@ import {MatTableModule} from '@angular/material/table';
 
 const routes: Routes = [
   { path: '', component: BlankPageComponent },
-  { path: 'dataPage/:dataType', component: DataPageComponent }
+  { path: 'dataPage/:dataType/:pageTitle', component: DataPageComponent }
   
 ];
 

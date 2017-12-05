@@ -1,10 +1,10 @@
 <div class="mainFrame">
-  <div class="title">{{param}}</div>
+  <div class="title">{{paramTitle}}</div>
   <!--mat-table #table [dataSource]="dataSource"-->
   <mat-table #table>
     <ng-container *ngFor="let col of displayedColumns" matColumnDef={{col}}>
-        <mat-header-cell *matHeaderCellDef> {{col}} </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element[col]}} </mat-cell>
+        <mat-header-cell *matHeaderCellDef> {{headerProperties[col]}} </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.attributes[col]}} </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

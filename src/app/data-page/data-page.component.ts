@@ -23,10 +23,12 @@ export class DataPageComponent implements OnInit {
   private sub: any;
   private res: any;
   public param: string;
+  public paramTitle: string;
 
   @ViewChild('table')table: any;
 
   displayedColumns = [];
+  headerProperties = {};
   dataSource = new ExampleDataSource([]);
 
   constructor(private router: Router, private route: ActivatedRoute, private _httpService:AppService) {
@@ -48,6 +50,9 @@ export class DataPageComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.param = params['dataType'];
       this.getData(this.param); 
+
+      this.paramTitle = params['pageTitle'];
+      this.getData(this.paramTitle); 
     });
   }
 
@@ -63,16 +68,17 @@ export class DataPageComponent implements OnInit {
 
   parseData(obj: any)
   {
-    if (obj.length > 0)
+    if (obj.fields != undefined && obj.fields.length > 0)
     {
       this.displayedColumns = [];
-      for (var property in obj[0].fields) {
-        if (obj[0].hasOwnProperty(property)) {
-          this.displayedColumns.push(property);
+      for (var property in obj.fields) {
+        if (obj.fields.hasOwnProperty(property)) {
+          this.displayedColumns.push(obj.fields[property].name);
         }
       }
+      this.headerProperties = obj.fieldAliases;
 
-      this.table.dataSource = new ExampleDataSource(obj);
+      this.table.dataSource = new ExampleDataSource(obj.features);
     }
     
   }
