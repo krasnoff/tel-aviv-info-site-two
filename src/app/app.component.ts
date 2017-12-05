@@ -19,7 +19,7 @@ export class AppComponent {
   private codesOriginal: Array<any> = [];
   
   ngOnInit() {
-    this._httpService.getMethod('/mainMenu.json')
+    this._httpService.getMethod('https://api.tel-aviv.gov.il/gis/LayersCodes')
     .subscribe (
       data => {
         data.forEach(element => {
@@ -27,8 +27,8 @@ export class AppComponent {
         });
 
         this.codes.sort(function(a, b) {
-          if (a > b) { return 1; }
-          if (a < b) { return -1; }
+          if (a.name > b.name) { return 1; }
+          if (a.name < b.name) { return -1; }
           return 0;
         });
 
@@ -39,7 +39,7 @@ export class AppComponent {
 
   search(val: any) {
     if (!val) this.codes = this.codesOriginal;
-    this.codes = this.codesOriginal.filter(d => d.indexOf(val) >= 0);
+    this.codes = this.codesOriginal.filter(d => d.name.indexOf(val) >= 0);
   }
 
   showSideNav(val: string): void {

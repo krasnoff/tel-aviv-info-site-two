@@ -13,7 +13,7 @@
         
     <mat-list>
       <mat-list-item *ngFor="let code of codes">
-        <a [routerLink]="['/dataPage', code]">{{ code }}</a>
+        <a [routerLink]="['/dataPage', code.code]">{{ code.name }}</a>
       </mat-list-item>
     </mat-list>
   </mat-sidenav>
