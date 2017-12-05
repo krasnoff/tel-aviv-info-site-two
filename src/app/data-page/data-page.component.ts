@@ -53,7 +53,7 @@ export class DataPageComponent implements OnInit {
 
   getData(dataType: string)
   {
-    this._httpService.getMethod('https://jsonplaceholder.typicode.com/' + dataType)
+    this._httpService.getMethod('https://api.tel-aviv.gov.il/gis/Layer?layerCode=' + dataType)
     .subscribe (
       data => {
         this.parseData(data);    
@@ -66,7 +66,7 @@ export class DataPageComponent implements OnInit {
     if (obj.length > 0)
     {
       this.displayedColumns = [];
-      for (var property in obj[0]) {
+      for (var property in obj[0].fields) {
         if (obj[0].hasOwnProperty(property)) {
           this.displayedColumns.push(property);
         }
