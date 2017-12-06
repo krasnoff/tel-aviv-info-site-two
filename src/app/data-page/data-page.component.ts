@@ -52,7 +52,7 @@ export class DataPageComponent implements OnInit {
       this.getData(this.param); 
 
       this.paramTitle = params['pageTitle'];
-      this.getData(this.paramTitle); 
+      
     });
   }
 
